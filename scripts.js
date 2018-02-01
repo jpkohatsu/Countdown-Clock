@@ -3,7 +3,7 @@ const timerDisplay = document.querySelector('.display_time-left');
 const endTime = document.querySelector('.display_end-time');
 const buttons = document.querySelector('[data-time]');
 
-function time(seconds) {
+function timer(seconds) {
   // to clear any existing timers
   clearInterval(countdown);
 
@@ -22,4 +22,12 @@ function time(seconds) {
     // else display it
     displayTimeLeft(secondsLeft);
   }, 1000);
+}
+
+function displayTimeLeft(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`;
+  document.title = display;
+  timerDisplay.textContent = display;
 }
